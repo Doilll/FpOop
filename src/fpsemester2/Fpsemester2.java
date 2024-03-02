@@ -12,11 +12,11 @@ public class Fpsemester2 {
         // membuat objek dan menyimpan objek di ArrayList
         Barang ayam = new Barang("Ayam goreng", 5000, 20);
         barang.add(ayam);
-        Barang nasi = new Barang("nasi", 3000, 67);
+        Barang nasi = new Barang("Nasi", 3000, 67);
         barang.add(nasi);
         Barang rendang = new Barang("Rendang", 10000, 25);
         barang.add(rendang);
-        Barang esTeh = new Barang("es teh", 2000, 50);
+        Barang esTeh = new Barang("Es Teh", 2000, 50);
         barang.add(esTeh);
         Barang ikan = new Barang("Mujaer", 7000, 20);
         barang.add(ikan);
@@ -26,26 +26,26 @@ public class Fpsemester2 {
             System.out.println("|       CAFE ANGOP SURABAYA      |");
             System.out.println("====================================");
             System.out.println("");
-            System.out.println("1. data makanan");
-            System.out.println("2. data pelanggan");
-            System.out.println("3. data transaksi");
-            System.out.println("4. exit");
-            System.out.print("input pilihan: ");
+            System.out.println("1. Data Menu");
+            System.out.println("2. Data Pelanggan");
+            System.out.println("3. Data Transaksi");
+            System.out.println("4. Exit");
+            System.out.print("Pilih: ");
             pilih = s.nextInt();
             switch (pilih) {
                 case 1:
                     Scanner sc = new Scanner(System.in);
-                    System.out.println("data barang");
-                    System.out.println("1. tambah\n2. ubah\n3. hapus\n4. lihat");
-                    System.out.print("Input pilihan: ");
+                    System.out.println("Data Menu");
+                    System.out.println("1. Tambah\n2. Ubah\n3. Hapus\n4. Lihat");
+                    System.out.print("Pilih: ");
                     int pilihan = sc.nextInt();
                     switch (pilihan) {
                         case 1:
                             // membuat objek untuk disimpan langsung ke ArrayList
                             Scanner inp = new Scanner(System.in);
-                            System.out.print("Nama barang: ");
+                            System.out.print("Nama Menu: ");
                             String n = inp.nextLine();
-                            System.out.print("harga:");
+                            System.out.print("Harga:");
                             int h = inp.nextInt();
                             System.out.print("Stok: ");
                             int s = inp.nextInt();
@@ -118,7 +118,7 @@ public class Fpsemester2 {
                             // menampilkan daftar menu
                             System.out.println("DAFTER MENU");
                             for (int i = 0; i < barang.size(); i++) {
-                                System.out.println(i + ". " + barang.get(i).toString());
+                                System.out.println(i+1 + ". " + barang.get(i).toString());
                             }
                             break;
                         default:
