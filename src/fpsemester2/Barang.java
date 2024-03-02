@@ -37,7 +37,6 @@ public class Barang {
     }
 
     public String toString() {
-        System.out.println("Daftar menu");
         return this.nama + " harga: " + this.harga + " stok: " + this.stok;
     }
 

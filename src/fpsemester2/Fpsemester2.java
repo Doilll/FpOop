@@ -110,6 +110,7 @@ public class Fpsemester2 {
                             }
                             break;
                         case 4:
+                            System.out.println("DAFTER MENU");
                             for (int i = 0; i < barang.size(); i++) {
                                 System.out.println(i + ". " + barang.get(i).toString());
                             }
