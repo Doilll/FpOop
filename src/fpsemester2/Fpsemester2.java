@@ -96,7 +96,7 @@ public class Fpsemester2 {
                                     System.out.print("1. ya/2. tidak: ");
                                     int yakin = c.nextInt();
                                     if (yakin == 1) {
-                                        barang.get(i).setNama(newNama);
+                                        barang.remove(i);
                                     } else {
                                         System.out.println("hapus barang dibatalkan");
                                     }
