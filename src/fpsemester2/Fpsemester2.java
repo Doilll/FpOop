@@ -24,18 +24,18 @@ public class Fpsemester2 {
             System.out.println("|       CAFE ANGOP SURABAYA      |");
             System.out.println("====================================");
             System.out.println("");
-            System.out.println("1. data makanan");
-            System.out.println("2. data pelanggan");
-            System.out.println("3. data transaksi");
-            System.out.println("4. exit");
-            System.out.print("input pilihan: ");
+            System.out.println("1. Data Makanan");
+            System.out.println("2. Data Pelanggan");
+            System.out.println("3. Data Transaksi");
+            System.out.println("4. Exit");
+            System.out.print("Pilih: ");
             pilih = s.nextInt();
             switch (pilih) {
                 case 1:
                     Scanner sc = new Scanner(System.in);
-                    System.out.println("data barang");
-                    System.out.println("1. tambah\n2. ubah\n3. hapus\n4. lihat");
-                    System.out.print("Input pilihan: ");
+                    System.out.println("Data Barang");
+                    System.out.println("1. Tambah\n2. Ubah\n3. Hapus\n4. Lihat");
+                    System.out.print("Pilih: ");
                     int pilihan = sc.nextInt();
                     switch (pilihan) {
                         case 1:
