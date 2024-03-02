@@ -10,11 +10,11 @@ public class Fpsemester2 {
         ArrayList<Barang> barang = new ArrayList<>();
         Barang ayam = new Barang("Ayam goreng", 5000, 20);
         barang.add(ayam);
-        Barang nasi = new Barang("nasi", 3000, 67);
+        Barang nasi = new Barang("Nasi", 3000, 67);
         barang.add(nasi);
         Barang rendang = new Barang("Rendang", 10000, 25);
         barang.add(rendang);
-        Barang esTeh = new Barang("es teh", 2000, 50);
+        Barang esTeh = new Barang("Es Teh", 2000, 50);
         barang.add(esTeh);
         Barang ikan = new Barang("Mujaer", 7000, 20);
         barang.add(ikan);
@@ -24,7 +24,7 @@ public class Fpsemester2 {
             System.out.println("|       CAFE ANGOP SURABAYA      |");
             System.out.println("====================================");
             System.out.println("");
-            System.out.println("1. Data Makanan");
+            System.out.println("1. Data Menu");
             System.out.println("2. Data Pelanggan");
             System.out.println("3. Data Transaksi");
             System.out.println("4. Exit");
@@ -33,16 +33,16 @@ public class Fpsemester2 {
             switch (pilih) {
                 case 1:
                     Scanner sc = new Scanner(System.in);
-                    System.out.println("Data Barang");
+                    System.out.println("Data Menu");
                     System.out.println("1. Tambah\n2. Ubah\n3. Hapus\n4. Lihat");
                     System.out.print("Pilih: ");
                     int pilihan = sc.nextInt();
                     switch (pilihan) {
                         case 1:
                             Scanner inp = new Scanner(System.in);
-                            System.out.print("Nama barang: ");
+                            System.out.print("Nama Menu: ");
                             String n = inp.nextLine();
-                            System.out.print("harga:");
+                            System.out.print("Harga:");
                             int h = inp.nextInt();
                             System.out.print("Stok: ");
                             int s = inp.nextInt();
