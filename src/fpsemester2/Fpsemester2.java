@@ -7,7 +7,9 @@ public class Fpsemester2 {
     static Scanner s = new Scanner(System.in);
 
     public static void main(String[] args) {
+        // membuat array list untuk menyimpan objek dari class barang
         ArrayList<Barang> barang = new ArrayList<>();
+        // membuat objek dan menyimpan objek di ArrayList
         Barang ayam = new Barang("Ayam goreng", 5000, 20);
         barang.add(ayam);
         Barang nasi = new Barang("nasi", 3000, 67);
@@ -39,6 +41,7 @@ public class Fpsemester2 {
                     int pilihan = sc.nextInt();
                     switch (pilihan) {
                         case 1:
+                            // membuat objek untuk disimpan langsung ke ArrayList
                             Scanner inp = new Scanner(System.in);
                             System.out.print("Nama barang: ");
                             String n = inp.nextLine();
@@ -50,6 +53,7 @@ public class Fpsemester2 {
                             System.out.println("Barang berhasil dibbuat....");
                             break;
                         case 2:
+                            // mengubah salah satu menu objek yang udah disimpan
                             Scanner input = new Scanner(System.in);
                             System.out.print("Input nama menu yang akan diubah: ");
                             String name = input.nextLine();
@@ -85,6 +89,7 @@ public class Fpsemester2 {
                             }
                             break;
                         case 3:
+                            // menghapus salah satu objek yang disimpan di arraylist
                             Scanner c = new Scanner(System.in);
                             System.out.print("input nama menu yang akan dihapus: ");
                             String newNama = c.nextLine();
@@ -96,7 +101,7 @@ public class Fpsemester2 {
                                     System.out.print("1. ya/2. tidak: ");
                                     int yakin = c.nextInt();
                                     if (yakin == 1) {
-                                        barang.get(i).setNama(newNama);
+                                        barang.remove(i);
                                     } else {
                                         System.out.println("hapus barang dibatalkan");
                                     }
@@ -110,6 +115,7 @@ public class Fpsemester2 {
                             }
                             break;
                         case 4:
+                            // menampilkan daftar menu
                             System.out.println("DAFTER MENU");
                             for (int i = 0; i < barang.size(); i++) {
                                 System.out.println(i + ". " + barang.get(i).toString());
