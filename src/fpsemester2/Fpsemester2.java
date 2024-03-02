@@ -83,9 +83,12 @@ public class Fpsemester2 {
                                     int newStok = input.nextInt();
                                     barang.get(idx).setStok(newStok);
                                     System.out.println("Harga dan stok berhasil diubah");
+                                } else {
+                                    System.out.println("perubahan dibatalkan");
                                 }
                             } else {
-                                System.out.println("Perubahan dibatalkan");
+                                System.out.println("menu tidak ditemukan untuk diubah");
+
                             }
                             break;
                         case 3:
@@ -118,7 +121,7 @@ public class Fpsemester2 {
                             // menampilkan daftar menu
                             System.out.println("DAFTER MENU");
                             for (int i = 0; i < barang.size(); i++) {
-                                System.out.println(i+1 + ". " + barang.get(i).toString());
+                                System.out.println(i + 1 + ". " + barang.get(i).toString());
                             }
                             break;
                         default:
