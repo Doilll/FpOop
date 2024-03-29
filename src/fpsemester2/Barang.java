@@ -1,19 +1,14 @@
 package fpsemester2;
 
-public class Barang {
+public class Barang extends Menu {
 
-    private String nama;
     private int harga;
     public int stok;
 
     public Barang(String nama, int harga, int stok) {
-        this.nama = nama;
+        super(nama);
         this.harga = harga;
         this.stok = stok;
-    }
-
-    public String getNama() {
-        return nama;
     }
 
     public int getHarga() {
@@ -22,10 +17,6 @@ public class Barang {
 
     public int getStok() {
         return stok;
-    }
-
-    public void setNama(String nama) {
-        this.nama = nama;
     }
 
     public void setHarga(int harga) {
@@ -37,7 +28,7 @@ public class Barang {
     }
 
     public String toString() {
-        return this.nama + " harga: " + this.harga + " stok: " + this.stok;
+        return getNama() + " harga: " + this.harga + " stok: " + this.stok;
     }
 
 }
