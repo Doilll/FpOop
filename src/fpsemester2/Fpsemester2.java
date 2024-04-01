@@ -36,7 +36,7 @@ public class Fpsemester2 {
             pilih = s.nextInt();
             switch (pilih) {
                 case 1:
-                    System.out.print("Input username: ");
+                    System.out.print("Input username: "+"\n");
                     String usename = s.nextLine();
                     System.out.println("Input password: ");
                     String pw = s.nextLine();
@@ -141,7 +141,7 @@ public class Fpsemester2 {
                     System.out.println("data pelanggan");
                     break;
                 case 3:
-                    System.out.print("Input nama anda: ");
+                    System.out.print("Input nama anda: "+"\n");
                     String n = s.nextLine();
                     System.out.print("input email anda");
                     String email = s.nextLine();
@@ -150,7 +150,8 @@ public class Fpsemester2 {
                     daftarPelanggan.get(jumlahPel).setTransaksi(tr.get(jumlahPel));
                     int jumPesan = 0;
                     do {
-                        System.out.println("1.Tambah\n2. ubah\n3. hapus\n4. selesai");
+                        System.out.println("1. Tambah\n2. ubah\n3. hapus\n4. selesai");
+                        System.out.print("Pilih: ");
                         pilih = s.nextInt();
                         switch (pilih) {
                             case 1:
