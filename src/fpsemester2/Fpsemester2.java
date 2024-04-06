@@ -133,6 +133,7 @@ public class Fpsemester2 {
                         System.out.println("password atau username salah");
                     break;
                 case 2:
+                    // menu pembayaran
                     System.out.println("Menu pembayaran");
                     int uang = 0;
                     Scanner pem = new Scanner(System.in);
@@ -313,6 +314,7 @@ public class Fpsemester2 {
                     }
                     // poin bonus nomer 2
                     if (pilihan == 2) {
+                        System.out.println("Laporan terkini");
                         System.out.println("Total pendapatan: " + Owner.getPendapatan());
                         for (int i = 0; i < barang.size() - 1; i++) {
                             for (int j = 1; j < barang.size(); j++) {
@@ -330,6 +332,20 @@ public class Fpsemester2 {
                         System.out.println("Input tidak valid");
                     break;
                 case 5:
+                    System.out.println("Laporan akhir");
+                    System.out.println("Total pendapatan: " + Owner.getPendapatan());
+                    for (int i = 0; i < barang.size() - 1; i++) {
+                        for (int j = 1; j < barang.size(); j++) {
+                            if (barang.get(i).getTotalPemasukan() > barang.get(j).getTotalPemasukan()) {
+                                Barang temp = barang.get(i);
+                                barang.set(i, barang.get(j));
+                                barang.set(j, temp);
+                            }
+                        }
+                    }
+                    for (Barang item : barang) {
+                        System.out.println(item.lihatPendapatan());
+                    }
                     System.out.println("Keluar dari apk");
                     System.exit(0);
                     break;
