@@ -31,8 +31,21 @@ public class Transaksi {
     }
 
     public void setTotalHarga() {
+        int totalHarga = 0;
         for (int i = 0; i < daftarBarang.size(); i++) {
-            this.totalHarga = +daftarBarang.get(i).getHarga() * jumlah.get(i);
+            totalHarga += daftarBarang.get(i).getHarga() * jumlah.get(i);
+        }
+        this.totalHarga = totalHarga;
+    }
+
+    public void applyDiscount(double discountPercentage) {
+        double discountAmount = this.totalHarga * (discountPercentage / 100);
+        this.totalHarga -= discountAmount;
+    }
+
+    public void setPendapatanPerMenu() {
+        for (int i = 0; i < daftarBarang.size(); i++) {
+            daftarBarang.get(i).setTotalPemasukan(jumlah.get(i) * daftarBarang.get(i).getHarga());
         }
     }
 

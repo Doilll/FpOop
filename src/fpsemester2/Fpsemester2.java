@@ -7,39 +7,34 @@ public class Fpsemester2 {
     static Scanner s = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         ArrayList<Barang> barang = new ArrayList<>();
         ArrayList<Pelanggan> daftarPelanggan = new ArrayList<>();
         ArrayList<Transaksi> tr = new ArrayList<>();
         int jumlahPel = 0;
-        Barang ayam = new Barang("Ayam goreng", 5000, 20);
-        barang.add(ayam);
-        Barang nasi = new Barang("Nasi", 3000, 67);
-        barang.add(nasi);
-        Barang rendang = new Barang("Rendang", 10000, 25);
-        barang.add(rendang);
-        Barang esTeh = new Barang("Es Teh", 2000, 50);
-        barang.add(esTeh);
-        Barang ikan = new Barang("Mujaer", 7000, 20);
-        barang.add(ikan);
+        MartabakTelor sosis = new MartabakTelor("Matabak telor sosis", 25000, 100);
+        barang.add(sosis);
+        MartabakManis keju = new MartabakManis("Martabak manis toping keju", 22000, 100);
+        barang.add(keju);
         int pilih = 0;
-        do {
+        while (true) {
             System.out.println("====================================");
-            System.out.println("|       CAFE ANGOP SURABAYA      |");
+            System.out.println("|       QIUQIU SURABAYA             |");
             System.out.println("====================================");
             System.out.println("");
             System.out.println("1. Data Menu");
-            System.out.println("2. Data Pelanggan");
+            System.out.println("2. Pembayaran");
             System.out.println("3. Data Transaksi");
-            System.out.println("4. Exit");
+            System.out.println("4. data penjualan");
+            System.out.println("5. Exit");
             System.out.print("Pilih: ");
             pilih = s.nextInt();
             switch (pilih) {
                 case 1:
+                    Scanner m = new Scanner(System.in);
                     System.out.print("Input username: ");
-                    String usename = s.nextLine();
+                    String usename = m.nextLine();
                     System.out.println("Input password: ");
-                    String pw = s.nextLine();
+                    String pw = m.nextLine();
                     if (pw.equalsIgnoreCase(Owner.getPassword())) {
                         System.out.println("Data Menu");
                         System.out.println(" 1. Tambah\n 2. Ubah\n 3. Hapus\n 4. Lihat");
@@ -138,46 +133,90 @@ public class Fpsemester2 {
                         System.out.println("password atau username salah");
                     break;
                 case 2:
+                    System.out.println("Menu pembayaran");
+                    int uang = 0;
+                    Scanner pem = new Scanner(System.in);
                     System.out.println("data pelanggan");
+                    System.out.println("Pembayaran");
+                    System.out.print("Input email anda: ");
+                    boolean ketemuE = false;
+                    try {
+                        String pelang = pem.nextLine();
+                        for (int i = 0; i < daftarPelanggan.size(); i++) {
+                            if (daftarPelanggan.get(i).getEmail().equals(pelang)) {
+                                ketemuE = true;
+                                System.out.println("Total harga");
+                                for (int j = 0; j < daftarPelanggan.get(i).getTransaksi().getDaftarBarang()
+                                        .size(); j++) {
+                                    System.out.print((j + 1) + "."
+                                            + daftarPelanggan.get(i).getTransaksi().getDaftarBarang().get(j).getNama());
+                                    System.out.println(": " + daftarPelanggan.get(i).getTransaksi().getJumlah().get(j));
+                                }
+                                System.out.println("total: " + daftarPelanggan.get(i).getTransaksi().getTotalHarga());
+                                System.out.println("Input uang anda: ");
+                                uang = pem.nextInt();
+                                if (uang >= daftarPelanggan.get(i).getTransaksi().getTotalHarga()) {
+                                    Owner.setPendapatan(daftarPelanggan.get(i).getTransaksi().getTotalHarga());
+                                    System.out.println("Pembayaran berhasil");
+                                    System.out.print("Kembalian: ");
+                                    System.out.println(uang - daftarPelanggan.get(i).getTransaksi().getTotalHarga());
+                                } else {
+                                    System.out.println("Pembayaran dibatalkan uang anda tidak cukup");
+                                }
+                                break;
+                            }
+                        }
+                        if (ketemuE == false) {
+                            System.out.println("Email tidak ditemukan untuk pembayaran");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Pembeli belum ada");
+                    }
                     break;
                 case 3:
+                    Scanner g = new Scanner(System.in);
                     System.out.print("Input nama anda: ");
-                    String n = s.nextLine();
-                    System.out.print("input email anda");
-                    String email = s.nextLine();
+                    String n = g.nextLine();
+                    System.out.print("input email anda: ");
+                    String email = g.nextLine();
                     daftarPelanggan.add(new Pelanggan(n, email));
                     tr.add(new Transaksi());
                     daftarPelanggan.get(jumlahPel).setTransaksi(tr.get(jumlahPel));
-                    int jumPesan = 0;
+                    int pilihT = 0;
                     do {
                         System.out.println("1.Tambah\n2. ubah\n3. hapus\n4. selesai");
-                        pilih = s.nextInt();
-                        switch (pilih) {
+                        System.out.print("Input pilihan: ");
+                        pilihT = s.nextInt();
+                        switch (pilihT) {
                             case 1:
+                                Scanner t = new Scanner(System.in);
                                 System.out.println("Daftar menu");
                                 for (int i = 0; i < barang.size(); i++) {
                                     System.out.println(
                                             (i + 1) + " " + barang.get(i).getNama() + "   " + barang.get(i).getHarga());
                                 }
                                 System.out.print("Input menu: ");
-                                int pil = s.nextInt();
-                                if (barang.get(pil - 1).getStok() > 0) {
-                                    System.out.print("input jumlah: ");
-                                    int jum = s.nextInt();
-                                    tr.get(tr.size() - 1).tambahBarang(barang.get(pil - 1), jum);
-                                    System.out.println("berhasil");
-                                } else if (pil >= barang.size()) {
-                                    System.out.println("Barang yang anda pilih tidak tersedia");
-                                } else if (pil > barang.get(pil - 1).getStok()) {
-                                    System.out.println("Stok tersisa: " + barang.get(pil - 1).getStok());
-                                    System.out.println("Input sesuai stok tersedia");
-                                } else {
-                                    System.out.println("menu yang anda pilih tidak tersedia");
+                                int pil = t.nextInt();
+                                try {
+                                    if (barang.get(pil - 1).getStok() > 0) {
+                                        System.out.print("input jumlah: ");
+                                        int jum = t.nextInt();
+                                        tr.get(tr.size() - 1).tambahBarang(barang.get(pil - 1), jum);
+                                        System.out.println("berhasil");
+                                    } else if (pil >= barang.size()) {
+                                        System.out.println("Barang yang anda pilih tidak tersedia");
+                                    } else if (pil > barang.get(pil - 1).getStok()) {
+                                        System.out.println("Stok tersisa: " + barang.get(pil - 1).getStok());
+                                        System.out.println("Input sesuai stok tersedia");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Input tidak valid");
                                 }
                                 break;
                             case 2:
+                                Scanner u = new Scanner(System.in);
                                 System.out.print("cari menu yang akan diubah");
-                                String cariUbah = s.nextLine();
+                                String cariUbah = u.nextLine();
                                 boolean k = false;
                                 for (int i = 0; i < tr.get(tr.size() - 1).getDaftarBarang().size(); i++) {
                                     if (cariUbah.equalsIgnoreCase(
@@ -187,14 +226,18 @@ public class Fpsemester2 {
                                             System.out.println((j + 1) + barang.get(j).toString());
                                         }
                                         System.out.print("Input menu baru: ");
-                                        int pilU = s.nextInt();
-                                        if (barang.get(pilU - 1).getStok() > 0) {
-                                            System.out.println("Input jumlah: ");
-                                            int jumU = s.nextInt();
-                                            tr.get(tr.size() - 1).gantiBarang(
-                                                    tr.get(tr.size() - 1).getDaftarBarang().indexOf(barang.get(i)),
-                                                    barang.get(pilU), jumU);
-                                            System.out.println("ganti barang berhasil");
+                                        int pilU = u.nextInt();
+                                        try {
+                                            if (barang.get(pilU - 1).getStok() > 0) {
+                                                System.out.println("Input jumlah: ");
+                                                int jumU = u.nextInt();
+                                                tr.get(tr.size() - 1).gantiBarang(
+                                                        tr.get(tr.size() - 1).getDaftarBarang().indexOf(barang.get(i)),
+                                                        barang.get(pilU), jumU);
+                                                System.out.println("ganti barang berhasil");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("input tidak valid");
                                         }
                                         break;
                                     }
@@ -214,23 +257,87 @@ public class Fpsemester2 {
                                         tr.get(tr.size() - 1)
                                                 .hapusBarang(tr.get(tr.size() - 1).getDaftarBarang().get(i));
                                         System.out.println("Hapus barang selesai...");
+                                        kh = true;
                                         break;
                                     }
                                 }
+                                if (kh == false) {
+                                    System.out.println("Barang tidak ditemukan untuk dihapus");
+                                }
+                                break;
+                            case 4:
+                                System.out.println("pesanan selesai");
                                 break;
                             default:
+                                System.out.println("Input tidak valid");
                                 break;
                         }
-                    } while (pilih != 4);
+                    } while (pilihT != 4);
+                    for (int i = 0; i < tr.get(tr.size() - 1).getDaftarBarang().size(); i++) {
+                        tr.get(tr.size() - 1).getDaftarBarang().get(i)
+                                .setStok(tr.get(tr.size() - 1).getDaftarBarang().get(i).getStok()
+                                        - tr.get(tr.size() - 1).getJumlah().get(i));
+                    }
+                    tr.get(tr.size() - 1).setTotalHarga();
+                    tr.get(tr.size() - 1).applyDiscount(10);
+                    tr.get(tr.size() - 1).setPendapatanPerMenu();
+                    System.out.println("Anda dapat diskon 10% dari total harga");
                     jumlahPel += 1;
+                    System.out.println("Transaksi berhasil disimpan harap bayar di menu data pelanggan");
+                    break;
                 case 4:
+                    System.out.println("1. laporan data pelanggan");
+                    System.out.println("2. laporan data penjualan");
+                    System.out.println("pilih: ");
+                    int pilihan = s.nextInt();
+                    // poin bonus nomer 3
+                    try {
+                        if (pilihan == 1) {
+                            for (int i = 0; i < daftarPelanggan.size() - 1; i++) {
+                                for (int j = 1; j < daftarPelanggan.size(); j++) {
+                                    if (daftarPelanggan.get(i).getTransaksi().getTotalHarga() > daftarPelanggan.get(j)
+                                            .getTransaksi().getTotalHarga()) {
+                                        Pelanggan temp = daftarPelanggan.get(i);
+                                        daftarPelanggan.set(i, daftarPelanggan.get(j));
+                                        daftarPelanggan.set(j, temp);
+                                    }
+                                }
+                            }
 
+                            for (Pelanggan p : daftarPelanggan) {
+                                System.out.println(p.getNama() + ": " + p.getTransaksi().getTotalHarga());
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Data pelanggan belum ada");
+                    }
+                    // poin bonus nomer 2
+                    if (pilihan == 2) {
+                        System.out.println("Total pendapatan: " + Owner.getPendapatan());
+                        for (int i = 0; i < barang.size() - 1; i++) {
+                            for (int j = 1; j < barang.size(); j++) {
+                                if (barang.get(i).getTotalPemasukan() > barang.get(j).getTotalPemasukan()) {
+                                    Barang temp = barang.get(i);
+                                    barang.set(i, barang.get(j));
+                                    barang.set(j, temp);
+                                }
+                            }
+                        }
+                        for (Barang item : barang) {
+                            System.out.println(item.lihatPendapatan());
+                        }
+                    } else
+                        System.out.println("Input tidak valid");
+                    break;
+                case 5:
+                    System.out.println("Keluar dari apk");
+                    System.exit(0);
                     break;
                 default:
-
+                    System.out.println("Input tidak valid");
                     break;
             }
-        } while (pilih != 4);
+        }
 
     }
 

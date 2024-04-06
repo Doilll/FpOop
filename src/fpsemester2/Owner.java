@@ -4,13 +4,13 @@ class Owner {
 
     static private String username = "Aufa";
     static private String password = "Faiq123";
-    static int pendapatan = 0;
+    static private double pendapatan = 0;
 
-    public void setPendapatan(int pendapatan) {
+    public static void setPendapatan(double pendapatan) {
         pendapatan = +pendapatan;
     }
 
-    public int getPendapatan() {
+    public static double getPendapatan() {
         return pendapatan;
     }
 
